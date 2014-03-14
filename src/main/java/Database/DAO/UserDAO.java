@@ -18,8 +18,7 @@ import Database.DBClasses.User;
  */
 public class UserDAO {
         private static Connection connection = null;
-        //private Statement statement = null;
-        //private static PreparedStatement statment = null;
+
         private static Driver driver;
         public UserDAO()
         {
@@ -42,7 +41,7 @@ public class UserDAO {
 
             driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
             DriverManager.registerDriver(driver);
-            //connection = DriverManager.getConnection("jdbc:mysql://localhost/feedback?" + "user=root&password=qwerty");*/
+            //connection = DriverManager.getConnection("jdbc:mysql://localhost/feedback?" + "user=root&password=qwerty");
             //driver = (Driver);
 
             //DriverManager.registerDriver(driver);

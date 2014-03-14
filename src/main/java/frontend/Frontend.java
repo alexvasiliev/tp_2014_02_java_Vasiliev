@@ -44,9 +44,8 @@ public class Frontend extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         Map<String, Object> pageVariables = new HashMap<>();
-        //ORM Orm = new ORM();
-        UserDAO userDao = new UserDAO();
-        //Orm.TestUser();
+        ORM Orm = new ORM();
+        UserDAO userDao = Orm.CreateDAO();
         try{
         if(userDao.GetUser(login,password).id != -1)
         {
@@ -72,9 +71,10 @@ public class Frontend extends HttpServlet {
         Map<String, Object> pageVariables = new HashMap<>();
         String login = request.getParameter("login");
         String pass = request.getParameter("password");
-        UserDAO userDao = new UserDAO();
+        ORM Orm = new ORM();
+        UserDAO userDao = Orm.CreateDAO();
         try{
-            if(!userDao.SetUser(login,pass))
+            if(userDao.SetUser(login,pass))
             {
                 response.sendRedirect("index.html");
             }
