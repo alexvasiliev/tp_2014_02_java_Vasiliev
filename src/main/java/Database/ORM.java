@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import Database.DAO.*;
 import sun.plugin2.main.server.ResultHandler;
 //import java.sql.Connection;
 //import  java.sql.DriverManager;
@@ -24,8 +25,23 @@ public class ORM {
     //private Statement statement = null;
     //private static PreparedStatement statment = null;
     private static Driver driver;
+    public ORM()
+    {
 
-    private void connect()
+        try{
+            connect();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void connect() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException
     {
 
             driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -53,10 +69,10 @@ public class ORM {
 
     }
 
-    public Integer GetUser(String login, String password)
+    public Integer GetUser (String login, String password) throws SQLException
     {
 
-        PreparedStatement statment = connection.prepareStatement("SELECT id from java_db.user Where login = ? and password = ?;");
+        PreparedStatement statment = connection.prepareStatement("SELECT * from java_db.user Where login = ? and password = ?;");
         statment.setString(1, login);
         statment.setString(2, password);
         Integer id = -1;
@@ -68,10 +84,10 @@ public class ORM {
         return id;
     }
 
-    public boolean SetUser(String login, String password)
+    public boolean SetUser(String login, String password) throws SQLException
     {
 
-        PreparedStatement statment = connection.prepareStatement("INSERT INTO java_db.user(login, password) Values ( ?, ?;");
+        PreparedStatement statment = connection.prepareStatement("INSERT INTO java_db.user(login, password) Values ( ?, ?);");
         statment.setString(1, login);
         statment.setString(2, password);
         if(!statment.execute())
@@ -79,5 +95,9 @@ public class ORM {
             return false;
         }
         return true;
+    }
+    public void TestUser()
+    {
+        try{SetUser("1","1");}catch(SQLException e){}
     }
 }
