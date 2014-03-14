@@ -17,7 +17,6 @@ public class Main {
 
         Server server = new Server(8081);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        //context.addServlet(new ServletHolder(frontend), "/index");
         context.addServlet(new ServletHolder(frontend), "/userId");
 
         ResourceHandler resource_handler = new ResourceHandler();

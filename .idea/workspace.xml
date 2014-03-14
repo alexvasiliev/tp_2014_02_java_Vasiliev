@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a7281fb-770a-4334-9422-34d1da9d6b2d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/servlets/Main.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Main.java" afterPath="$PROJECT_DIR$/src/main/java/Main.java" />
     </list>
     <ignored path="javaProject1.iws" />
@@ -70,7 +69,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="51" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+            <state line="18" column="98" selection-start="748" selection-end="748" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
               <folding />
             </state>
           </provider>
@@ -115,7 +114,7 @@
       <file leaf-file-name="Frontend.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/frontend/Frontend.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="21" selection-start="2916" selection-end="2916" vertical-scroll-proportion="1.4364207" vertical-offset="0" max-vertical-offset="1080">
+            <state line="75" column="21" selection-start="2916" selection-end="2916" vertical-scroll-proportion="1.2354788" vertical-offset="128" max-vertical-offset="1080">
               <folding />
             </state>
           </provider>
@@ -733,16 +732,16 @@
       <workItem from="1393049658952" duration="5129000" />
       <workItem from="1393657137455" duration="2964000" />
       <workItem from="1394742188269" duration="296000" />
-      <workItem from="1394808484070" duration="73000" />
+      <workItem from="1394808484070" duration="392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28793000" />
+    <option name="totallyTimeSpent" value="29112000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-4" width="1857" height="1085" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1094,7 +1093,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="51" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+        <state line="18" column="98" selection-start="748" selection-end="748" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
           <folding />
         </state>
       </provider>
@@ -1117,7 +1116,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frontend/Frontend.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="21" selection-start="2916" selection-end="2916" vertical-scroll-proportion="1.4364207" vertical-offset="0" max-vertical-offset="1080">
+        <state line="75" column="21" selection-start="2916" selection-end="2916" vertical-scroll-proportion="1.2354788" vertical-offset="128" max-vertical-offset="1080">
           <folding />
         </state>
       </provider>
