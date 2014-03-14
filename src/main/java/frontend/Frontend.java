@@ -29,6 +29,7 @@ public class Frontend extends HttpServlet {
     private String login = "";
     private String password = "";
     private AtomicLong userIdGenerator = new AtomicLong();
+    private static boolean TEST;
 
     private static final DateFormat formatter = new SimpleDateFormat("HH.mm.ss");
     public static String getTime() {
@@ -74,15 +75,21 @@ public class Frontend extends HttpServlet {
         ORM Orm = new ORM();
         UserDAO userDao = Orm.CreateDAO();
         try{
-            if(userDao.SetUser(login,pass))
+            if(userDao.SetUser(login,pass) == 1)
             {
                 response.sendRedirect("index.html");
+
             }
-            else
+            else if(userDao.SetUser(login,pass) == -1)
             {
                 response.sendRedirect("Error.html");
+
             }
+
+            //TEST = userDao.SetUser(login,pass);
         }catch (SQLException e){};
+
+        //pageVariables.put("TEST", Boolean.toString(TEST));
         response.getWriter().println(PageGenerator.getPage("createUser.tml", pageVariables));
 
         }

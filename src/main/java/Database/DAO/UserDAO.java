@@ -82,17 +82,23 @@ public class UserDAO {
             return user;
         }
 
-        public boolean SetUser(String login, String password) throws SQLException
+        public Integer SetUser(String login, String password) throws SQLException
         {
-
+            PreparedStatement statment1 = connection.prepareStatement("SELECT * from java_db.user Where login = ?;");
+            statment1.setString(1, login);
+            if(statment1.executeQuery().next())
+            {
+                return -1;
+            }
             PreparedStatement statment = connection.prepareStatement("INSERT INTO java_db.user(login, password) Values ( ?, ?);");
             statment.setString(1, login);
             statment.setString(2, password);
-            if(!statment.execute())
+            if(statment.executeQuery().next())
             {
-                return false;
+                return 1;
             }
-            return true;
+            //else
+            return 0;
         }
         public void TestUser()
         {
