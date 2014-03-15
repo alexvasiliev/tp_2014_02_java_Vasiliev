@@ -66,7 +66,8 @@ public class Frontend_Test {
     {
         prepare("/There_is_no_page");
         frontend.doGet(REQUEST, RESPONSE);
-        Assert.assertTrue(stringWriter.toString().equals(""));
+        System.out.println(stringWriter.toString());
+        Assert.assertTrue(stringWriter.toString().contains("Sorry"));
     }
 
     @Test
@@ -85,12 +86,12 @@ public class Frontend_Test {
     public void testDoPostLoginFailure() throws ServletException, IOException
     {
         prepare(POST_LOGIN);
-        when(REQUEST.getParameter("login")).thenReturn("1");
-        when(REQUEST.getParameter("password")).thenReturn("2");
+        when(REQUEST.getParameter("login")).thenReturn("1EWFWw");
+        when(REQUEST.getParameter("password")).thenReturn("2qetqewr");
 
         ORM orm = new ORM();
         frontend.doPost(REQUEST, RESPONSE);
-        verify(RESPONSE, atLeastOnce()).sendRedirect("/");
+        verify(RESPONSE, atLeastOnce()).sendRedirect("Error.html");
     }
 
     @Test
@@ -116,6 +117,6 @@ public class Frontend_Test {
 
         ORM orm = new ORM();
         frontend.doPost(REQUEST, RESPONSE);
-        verify(RESPONSE, atLeastOnce()).sendRedirect("/Error.html");
+        verify(RESPONSE, atLeastOnce()).sendRedirect("Error.html");
     }
 }

@@ -19,19 +19,20 @@ public class Main {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(frontend), "/createUser");
         context.addServlet(new ServletHolder(frontend), "/userId");
+        context.addServlet(new ServletHolder(frontend), "/*");
 
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setDirectoriesListed(true);
         resource_handler.setResourceBase("static");
 
-       // RewriteHandler rewriteHandler = new RewriteHandler();
-       // rewriteHandler.setRewriteRequestURI(true);
-       // rewriteHandler.setRewritePathInfo(true);
-       // rewriteHandler.setOriginalPathAttribute("requestedPath");
-       // RedirectRegexRule rule = new RedirectRegexRule();
-       // rule.setRegex("/");
-       // rule.setReplacement("/index");
-       //rewriteHandler.addRule(rule);
+        RewriteHandler rewriteHandler = new RewriteHandler();
+        rewriteHandler.setRewriteRequestURI(true);
+        rewriteHandler.setRewritePathInfo(true);
+        rewriteHandler.setOriginalPathAttribute("requestedPath");
+        RedirectRegexRule rule = new RedirectRegexRule();
+        rule.setRegex("/*");
+        rule.setReplacement("/Error.html");
+        rewriteHandler.addRule(rule);
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[]{resource_handler, context});

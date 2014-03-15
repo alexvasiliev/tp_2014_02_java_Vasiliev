@@ -1,14 +1,11 @@
 package Database.DAO;
 
-
-import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import sun.plugin2.main.server.ResultHandler;
 
 import Database.DBClasses.User;
 
@@ -41,23 +38,16 @@ public class UserDAO {
 
             driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
             DriverManager.registerDriver(driver);
-            //connection = DriverManager.getConnection("jdbc:mysql://localhost/feedback?" + "user=root&password=qwerty");
-            //driver = (Driver);
-
-            //DriverManager.registerDriver(driver);
 
             StringBuilder url = new StringBuilder();
 
             url.
-                    append("jdbc:mysql://").		//db type
-                    append("localhost:"). 		//host name
-                    append("3306/").			//port
-                    append("java_db?").		//db name
-                    append("user=root&").		//login
-                    append("password=qwerty");		//password
-
-            //Class.forName("com.mysql.jdbc.Driver");
-
+                    append("jdbc:mysql://").
+                    append("localhost:").
+                    append("3306/").
+                    append("java_db?").
+                    append("user=root&").
+                    append("password=qwerty");
 
             connection = DriverManager.getConnection(url.toString());
 
@@ -82,27 +72,13 @@ public class UserDAO {
             return user;
         }
 
-        public Integer SetUser(String login, String password) throws SQLException
+        public void SetUser(String login, String password) throws SQLException
         {
-            PreparedStatement statment1 = connection.prepareStatement("SELECT * from java_db.user Where login = ?;");
-            statment1.setString(1, login);
-            if(statment1.executeQuery().next())
-            {
-                return -1;
-            }
             PreparedStatement statment = connection.prepareStatement("INSERT INTO java_db.user(login, password) Values ( ?, ?);");
             statment.setString(1, login);
             statment.setString(2, password);
-            if(statment.executeQuery().next())
-            {
-                return 1;
-            }
-            //else
-            return 0;
-        }
-        public void TestUser()
-        {
-            try{SetUser("1","1");}catch(SQLException e){}
+            statment.execute();
+
         }
     }
 

@@ -29,7 +29,7 @@ public class Frontend extends HttpServlet {
     private String login = "";
     private String password = "";
     private AtomicLong userIdGenerator = new AtomicLong();
-    private static boolean TEST;
+    private static Integer TEST = -5;
 
     private static final DateFormat formatter = new SimpleDateFormat("HH.mm.ss");
     public static String getTime() {
@@ -60,7 +60,12 @@ public class Frontend extends HttpServlet {
             pageVariables.put("serverTime", getTime());
             pageVariables.put("userId", userId);
         }
-        }catch (SQLException e){}
+            else
+                response.sendRedirect("Error.html");
+        }catch (SQLException e){
+            e.printStackTrace();
+            response.sendRedirect("Error.html");
+        }
 
         response.getWriter().println(PageGenerator.getPage("userId.tml", pageVariables));
     }
@@ -75,21 +80,16 @@ public class Frontend extends HttpServlet {
         ORM Orm = new ORM();
         UserDAO userDao = Orm.CreateDAO();
         try{
-            if(userDao.SetUser(login,pass) == 1)
-            {
-                response.sendRedirect("index.html");
+            userDao.SetUser(login,pass);
 
-            }
-            else if(userDao.SetUser(login,pass) == -1)
-            {
-                response.sendRedirect("Error.html");
 
-            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            response.sendRedirect("Error.html");
+        };
 
-            //TEST = userDao.SetUser(login,pass);
-        }catch (SQLException e){};
-
-        //pageVariables.put("TEST", Boolean.toString(TEST));
+        pageVariables.put("login", login);
+        pageVariables.put("password", pass);
         response.getWriter().println(PageGenerator.getPage("createUser.tml", pageVariables));
 
         }
